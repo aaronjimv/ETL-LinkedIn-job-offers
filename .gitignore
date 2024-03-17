@@ -1,0 +1,4 @@
+venv/
+base_linkedin_scraper/
+prefect_base_workflow/
+__pycache__/
