@@ -11,7 +11,7 @@ async def task_extract(skill):
    url = requests.get(config.extract_url.replace('#',skill))
    
    if(url.status_code == 200):
-      print(f"Runing extract data for - {skill} - jobs...")
+      print(f"Running data extraction for - {skill} - jobs...")
       html = BeautifulSoup(url.text,'html.parser')
       dataOfertas = html.find('ul',{'class':'jobs-search__results-list'})
       listaOfertas = dataOfertas.find_all('li')

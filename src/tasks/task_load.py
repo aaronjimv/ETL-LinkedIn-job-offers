@@ -17,7 +17,7 @@ class Offer(Base):
    date = Column(Date)
 
 
-@task(name="LOAD THE DATO TO THE DB")
+@task(name="LOAD THE DATA TO THE DB")
 async def task_load(offers):
    print("Loading...")
 
