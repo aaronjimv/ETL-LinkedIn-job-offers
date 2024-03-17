@@ -22,7 +22,7 @@ async def task_load(offers):
    print("Loading...")
 
    # Database connection
-   engine = create_engine('sqlite:///offers.db', echo=True)
+   engine = create_engine('sqlite:///data/offers.db', echo=True)
    Base.metadata.create_all(bind=engine)
    Session = sessionmaker(bind=engine)
    session = Session()
