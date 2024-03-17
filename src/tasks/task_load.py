@@ -30,10 +30,10 @@ async def task_load(offers):
    # browse all offers
    for offer in offers:
       new_offers = Offer(
-         job = offer['puesto'],
-         locate = offer['ubicacion'],
+         job = offer['job'],
+         locate = offer['locate'],
          url = offer['url'],
-         date = datetime.strptime(offer['fecha'],'%Y-%m-%d').date()
+         date = datetime.strptime(offer['date'],'%Y-%m-%d').date()
       )
       session.add(new_offers)
 
