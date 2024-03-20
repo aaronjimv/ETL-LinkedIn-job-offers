@@ -1,4 +1,4 @@
-from prefect import task
+from prefect import task, Flow
 import sqlite3
 from sqlalchemy import create_engine, Column, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
@@ -17,13 +17,20 @@ class Offer(Base):
    date = Column(Date)
 
 
-@task(name="LOAD THE DATA TO THE DB")
-async def task_load(offers):
-   print("Loading...")
+@task(name="CREATE DB ENGINE")
+def task_engine():
+   print("Creating DB engine...")
 
-   # Database connection
    engine = create_engine('sqlite:///data/offers.db', echo=True)
    Base.metadata.create_all(bind=engine)
+   return engine
+
+
+@task(name="LOAD THE DATA TO THE DB")
+async def task_load(offers, engine):
+   print("Loading data...")
+
+   # Database connection
    Session = sessionmaker(bind=engine)
    session = Session()
 
