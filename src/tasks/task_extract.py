@@ -16,6 +16,7 @@ async def task_extract(skill):
       offertsData = html.find('ul',{'class':'jobs-search__results-list'})
       offersList = offertsData.find_all('li')
       offersResult = []
+
       for offer in offersList:
          title = offer.find('h3',{'class':'base-search-card__title'})
          company = offer.find('span',{'class':'job-search-card__location'})
@@ -34,4 +35,5 @@ async def task_extract(skill):
       return offersResult
    
    else:
-      print("error " + str(url.status_code))
+      print(f'ERROR: {url.status_code}.')
+      return False

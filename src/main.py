@@ -8,8 +8,13 @@ async def main_flow():
     search = ['python']
     for s in search:
         offers = await task_extract(s)
-        engine = task_engine()
-        await task_load(offers, engine)
+        
+        if offers is not False:
+            engine = task_engine()
+            await task_load(offers, engine)
+        
+        else:
+            print("The workflow has stopped, please try again.")
     
     
 if __name__ == '__main__':
