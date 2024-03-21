@@ -19,15 +19,17 @@ async def task_extract(skill):
 
       for offer in offersList:
          title = offer.find('h3',{'class':'base-search-card__title'})
-         company = offer.find('span',{'class':'job-search-card__location'})
+         company = offer.find('a',{'class':'hidden-nested-link'})
+         location = offer.find('span',{'class':'job-search-card__location'})
          url_offer = offer.find('a',{'class':'base-card__full-link absolute top-0 right-0 bottom-0 left-0 p-0 z-[2]'})
          url_offer = url_offer['href'].strip().split('?')[0]
          id_offer = url_offer.split('-')[-1]
          date = offer.find('time')
          dictionary_offer = {
                'id':id_offer,
+               'company':company.get_text().strip(),
                'job':title.get_text().strip(),
-               'locate':company.get_text().strip(),
+               'location':location.get_text().strip(),
                'url': url_offer,
                'date':date['datetime'].strip()
          }

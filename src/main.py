@@ -10,8 +10,9 @@ async def main_flow():
         offers = await task_extract(s)
         
         if offers is not False:
-            engine = task_engine()
-            await task_load(offers, engine)
+            #engine = task_engine()
+            #await task_load(offers, engine)
+            print(offers)
         
         else:
             print("The workflow has stopped, please try again.")
