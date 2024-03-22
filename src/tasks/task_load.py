@@ -11,6 +11,7 @@ Base = declarative_base()
 class Offer(Base):
    __tablename__ = 'offers'
    id = Column(Integer, primary_key=True)
+   company = Column(String)
    job = Column(String)
    locate = Column(String)
    url = Column(String)
@@ -21,7 +22,7 @@ class Offer(Base):
 def task_engine():
    print("Creating DB engine...")
 
-   engine = create_engine('sqlite:///data/offers.db', echo=True)
+   engine = create_engine('sqlite:///data/offers_test2.db', echo=True) # test DB
    Base.metadata.create_all(bind=engine)
    return engine
 
@@ -37,8 +38,9 @@ async def task_load(offers, engine):
    # browse all offers
    for offer in offers:
       new_offers = Offer(
+         company = offer['company'],
          job = offer['job'],
-         locate = offer['locate'],
+         locate = offer['location'],
          url = offer['url'],
          date = datetime.strptime(offer['date'],'%Y-%m-%d').date()
       )
