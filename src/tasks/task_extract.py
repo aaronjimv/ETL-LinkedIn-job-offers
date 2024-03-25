@@ -37,5 +37,4 @@ async def task_extract(skill):
       return offersResult
    
    else:
-      print(f'ERROR: {url.status_code}.')
-      return False
+      return url.status_code

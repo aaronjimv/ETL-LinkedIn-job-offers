@@ -7,15 +7,21 @@ import asyncio
 async def main_flow():
     search = ['python']
     for s in search:
-        offers = await task_extract(s)
-        
-        if offers is not False:
-            engine = task_engine()
-            await task_load(offers, engine)
-        
-        else:
-            print("The workflow has stopped, please try again.")
-    
-    
+
+        while True:
+            offers = await task_extract(s)
+            
+            if (offers == 429):
+                print(f"Connection error: {offers}. Trying again...")
+
+            elif offers is not type(int):
+                engine = task_engine()
+                await task_load(offers, engine)
+                break
+            
+            else:
+                print("The workflow has stopped.")
+
+
 if __name__ == '__main__':
     asyncio.run(main_flow())
