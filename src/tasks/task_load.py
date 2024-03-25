@@ -22,7 +22,7 @@ class Offer(Base):
 def task_engine():
    print("Creating DB engine...")
 
-   engine = create_engine('sqlite:///data/offers_test2.db', echo=True) # test DB
+   engine = create_engine('sqlite:///data/offers.db', echo=True) # test DB
    Base.metadata.create_all(bind=engine)
    return engine
 
