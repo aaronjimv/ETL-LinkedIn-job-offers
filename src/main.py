@@ -19,7 +19,7 @@ async def main_flow():
                 await task_load(offers, engine)
                 break
             
-            elif (offers == 11001):
+            else:
                 print("The workflow has stopped.")
                 break
 
