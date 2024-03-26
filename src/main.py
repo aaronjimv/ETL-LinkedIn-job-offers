@@ -19,8 +19,9 @@ async def main_flow():
                 await task_load(offers, engine)
                 break
             
-            else:
+            elif (offers == 11001):
                 print("The workflow has stopped.")
+                break
 
 
 if __name__ == '__main__':
