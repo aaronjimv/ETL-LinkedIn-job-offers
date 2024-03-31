@@ -16,6 +16,11 @@ async def main_flow():
             if (offers == 429):
                 print(f"Connection error: {offers}. Trying again...")
 
+                num_offers_extracted = 0
+                timestamp = datetime.now()
+                error = offers
+                await task_logs(num_offers_extracted, timestamp, error)
+
             elif offers is not type(int):
                 engine = task_engine()
                 await task_load(offers, engine)
@@ -29,6 +34,12 @@ async def main_flow():
             
             else:
                 print("The workflow has stopped.")
+                
+                num_offers_extracted = 0
+                timestamp = datetime.now()
+                error = offers
+                await task_logs(num_offers_extracted, timestamp, error)
+                
                 break
 
 
