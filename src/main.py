@@ -1,6 +1,8 @@
 from prefect import flow, task
 from tasks.task_extract import task_extract
 from tasks.task_load import task_load, task_engine
+from tasks.task_logs import task_logs
+from datetime import datetime
 import asyncio
 
 @flow(name='ETL linkedin job scraper')
@@ -17,6 +19,13 @@ async def main_flow():
             elif offers is not type(int):
                 engine = task_engine()
                 await task_load(offers, engine)
+                
+                num_offers_extracted = len(offers)
+                timestamp = datetime.now()
+                error = "-"
+                
+                await task_logs(num_offers_extracted, timestamp, error)
+
                 break
             
             else:
