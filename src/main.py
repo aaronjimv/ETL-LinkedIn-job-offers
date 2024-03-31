@@ -22,8 +22,7 @@ async def main_flow():
                 
                 num_offers_extracted = len(offers)
                 timestamp = datetime.now()
-                error = "-"
-                
+                error = "ok"
                 await task_logs(num_offers_extracted, timestamp, error)
 
                 break

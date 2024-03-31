@@ -6,7 +6,7 @@ import csv
 async def task_logs(num_offers_extracted, timestamp, error):
    log_entry = {
       'date': timestamp.strftime("%Y-%m-%d"),
-      'hour': timestamp.strftime("%H:%M"),
+      'hour': timestamp.strftime("%H:%M:%S"),
       'offers_extracted': num_offers_extracted,
       'error': error
    }
