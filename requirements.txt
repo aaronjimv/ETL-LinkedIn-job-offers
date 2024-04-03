@@ -2,3 +2,7 @@ prefect
 requests
 bs4
 sqlalchemy
+pandas
+numpy
+matplotlib
+seaborn
