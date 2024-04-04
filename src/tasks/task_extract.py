@@ -8,6 +8,13 @@ config = Config()
 
 @task(name="EXTRACT LINKEDIN DATA")
 async def task_extract(skill):
+   """
+   It is responsible for carrying out the web scraping 
+   process. 
+
+   Receives a skill to search for and returns a list of 
+   offers or an error if it occurs.
+   """
    url = requests.get(config.extract_url.replace('#',skill))
    
    if(url.status_code == 200):
