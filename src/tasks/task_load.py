@@ -21,7 +21,7 @@ class Offer(Base):
 @task(name="CREATE DB ENGINE")
 def task_engine():
    """
-   Creates and returd the database engine.
+   Creates and return the database engine.
    """
    print("Creating DB engine...")
 
