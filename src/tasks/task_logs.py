@@ -4,6 +4,15 @@ import csv
 
 @task(name="LOG EXECUTION")
 async def task_logs(num_offers_extracted, timestamp, error):
+   """
+   Receive: 
+      the number of offers.
+      the timestamp.
+      the error if any occurred.
+
+   It organizes the information in a dictionary 
+   that is then stored in a csv file.
+   """
    log_entry = {
       'date': timestamp.strftime("%Y-%m-%d"),
       'hour': timestamp.strftime("%H:%M:%S"),
