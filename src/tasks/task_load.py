@@ -20,6 +20,9 @@ class Offer(Base):
 
 @task(name="CREATE DB ENGINE")
 def task_engine():
+   """
+   Creates and returd the database engine.
+   """
    print("Creating DB engine...")
 
    engine = create_engine('sqlite:///data/offers.db', echo=True) # test DB
@@ -29,6 +32,11 @@ def task_engine():
 
 @task(name="LOAD THE DATA TO THE DB")
 async def task_load(offers, engine):
+   """
+   Receives the list of offers along with the DB engine. 
+   
+   Load the offers in the DB and close the session.
+   """
    print("Loading data...")
 
    # Database connection
