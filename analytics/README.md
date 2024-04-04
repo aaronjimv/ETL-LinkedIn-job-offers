@@ -1,0 +1,1 @@
+Notebook to analyze the data collected in the database with libraries such as pandas, matplotlib and seaborn in a simple way.
