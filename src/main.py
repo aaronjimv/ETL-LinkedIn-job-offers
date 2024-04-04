@@ -7,6 +7,17 @@ import asyncio
 
 @flow(name='ETL linkedin job scraper')
 async def main_flow():
+    """
+    Project main flow.
+
+    Put the different functionalities together
+    in a `while` loop to handle the `429 error` 
+    and not interrupt the process.
+
+    The ideal case is that `offers` is not of `type int`. 
+    Which means that the web srcaping process was carried 
+    out correctly and returned a list of offers.
+    """
     search = ['python']
     for s in search:
 
